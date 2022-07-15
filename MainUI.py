@@ -10,9 +10,30 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from AddItem import Ui_AddItem
+#from AddNewStore import Ui_AddNewStore
+#from Overview import Ui_Overview
 
 
 class Ui_MainWindow(object):
+    def openWindowAddItem(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AddItem()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def openWindow2(self):
+        self.window = QtWidgets.QMainWindow()
+        #self.ui = Ui_"toisen ikkunan nimi"()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def openWindow3(self):
+        self.window = QtWidgets.QMainWindow()
+        #self.ui = Ui_"kolmannen ikkunan nimi"()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(890, 580)
@@ -189,6 +210,9 @@ class Ui_MainWindow(object):
         self.pushButton_5.setMinimumSize(QtCore.QSize(200, 200))
         self.pushButton_5.setStyleSheet("background-color: rgb(170, 255, 255);")
         self.pushButton_5.setObjectName("pushButton_5")
+
+        self.pushButton_5.clicked.connect(self.openWindowAddItem)
+
         self.gridLayout.addWidget(self.pushButton_5, 0, 0, 1, 1)
         self.pushButton = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.pushButton.setMinimumSize(QtCore.QSize(0, 200))
