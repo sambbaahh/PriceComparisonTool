@@ -9,7 +9,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+sys.path.append(r"D:\PriceComparisonTool")
 
+from Codes.GetPrices import GetPrices
 
 class Ui_AddItem(object):
     def setupUi(self, AddItem):
