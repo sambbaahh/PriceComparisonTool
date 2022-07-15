@@ -4,19 +4,19 @@ import sys
 
 
 
-class UI(QDialog):
+class UI(QMainWindow):
 
     def __init__(self):
         super(UI, self).__init__()
         
-        uic.loadUi("UIcode.py", self)
+        uic.loadUi("AddItem.ui", self)
 
         self.show()
 
 
 
 
-app = QApplication()
+app = QApplication(sys.argv)
 UIWindows = UI()
 app.exec_()
 

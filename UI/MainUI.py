@@ -14,6 +14,8 @@ from AddItem import Ui_AddItem
 #from AddNewStore import Ui_AddNewStore
 #from Overview import Ui_Overview
 
+from GetPrices import GetPrices
+
 
 class Ui_MainWindow(object):
     def openWindowAddItem(self):
