@@ -10,8 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from MainUI import Ui_MainWindow
-
 import sys
 
 sys.path.append("./")
@@ -19,13 +17,6 @@ from Codes.GetPrices import GetPrices
 
 
 class Ui_AddItem(object):
-
-        def openWindowMain(self):
-                self.window = QtWidgets.QMainWindow()
-                self.ui = Ui_MainWindow
-                self.ui.setupUi(self.window)
-                self.window.show()
-
 
 
         def setupUi(self, AddItem):
@@ -70,7 +61,7 @@ class Ui_AddItem(object):
                 QtCore.QMetaObject.connectSlotsByName(AddItem)
 
 
-                self.btnBack.clicked.connect(self.openWindowMain)
+                self.btnBack.clicked.connect(AddItem.close)
 
         def retranslateUi(self, AddItem):
                 _translate = QtCore.QCoreApplication.translate

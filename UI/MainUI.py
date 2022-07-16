@@ -228,9 +228,6 @@ class Ui_MainWindow(object):
         #BUTTON CLICK
         self.pushButton.clicked.connect(self.buttonClicked)
 
-        #Close MainWindow after pressing btnAddItem
-        self.pushButton_5.clicked.connect(MainWindow.close)
-
 
         
 
