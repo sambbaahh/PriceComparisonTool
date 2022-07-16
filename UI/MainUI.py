@@ -228,6 +228,12 @@ class Ui_MainWindow(object):
         #BUTTON CLICK
         self.pushButton.clicked.connect(self.buttonClicked)
 
+        #Close MainWindow after pressing btnAddItem
+        self.pushButton_5.clicked.connect(MainWindow.close)
+
+
+        
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
