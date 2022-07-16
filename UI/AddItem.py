@@ -87,6 +87,9 @@ class Ui_AddItem(object):
                 self.LabelStore.setText(_translate("AddItem", "Select store:"))
                 self.btnBack.setText(_translate("AddItem", "Back"))
         
+                #Toimii mutta muokata,koska
+                #jos inputti ei ole toimiva url niin ohjelma sammuu
+                self.btnAddItem.clicked.connect(lambda: GetPrices.getJimmsPrice(self.InputUrl.toPlainText()))
         
         
 if __name__ == "__main__":
