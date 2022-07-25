@@ -225,12 +225,6 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 
-        #BUTTON CLICK
-        self.pushButton.clicked.connect(self.buttonClicked)
-
-
-        
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -239,10 +233,6 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Overview"))
 
     
-    def buttonClicked(self):
-        print("jaa")
-        
-
 
 if __name__ == "__main__":
     import sys
