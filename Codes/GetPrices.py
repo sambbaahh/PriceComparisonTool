@@ -8,5 +8,4 @@ class GetPrices:
         result = requests.get(url)
         doc = BeautifulSoup(result.text, "html.parser")
         price = doc.findAll('span',{'itemprop' : 'price'}, text= True)[0].text
-        print(price)
         return price

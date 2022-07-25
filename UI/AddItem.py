@@ -14,8 +14,10 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 import ctypes
 import time
+from datetime import datetime
 
 sys.path.append("./")
+from Codes.Database import Database
 from Codes.GetPrices import GetPrices
 
 
@@ -89,18 +91,43 @@ class Ui_AddItem(object):
 "<p align=\"center\" style=\" margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
                 self.LabelStore.setText(_translate("AddItem", "Select store:"))
                 self.btnBack.setText(_translate("AddItem", "Back"))
-        
+
+
+
+                #!!!
+                #Set shops to shopDropMenu
+                #!!!
+                object = Database
+                shopList = object.findShops()
+                self.ShopDropMenu.clear()
+                self.ShopDropMenu.setPlaceholderText(" ")
+                self.ShopDropMenu.setCurrentIndex(-1)
+                for row in shopList:
+                        self.ShopDropMenu.addItem(row[0])
+
+
                 def Mbox(title, text, style):
                         return ctypes.windll.user32.MessageBoxW(0, text, title, style)
                 
                 def AddItemClick():
-                        url_alku = self.InputUrl.toPlainText()
+                        databaseObject = Database
                         QApplication.processEvents()
-                        if not (url_alku.startswith("https://www.jimms.fi/")):
+
+                        itemName = self.InputItemName.toPlainText()
+                        URL = self.InputUrl.toPlainText()
+                        shop = self.ShopDropMenu.currentText()
+                        price = GetPrices.getJimmsPrice(URL)
+                        date = datetime.today().strftime('%Y-%m-%d')
+
+                        
+                        databaseObject.addItem(databaseObject, itemName, URL, shop)
+                        databaseObject.addItemPrice(databaseObject, price, date, itemName)
+
+                        if not (URL.startswith("https://www.jimms.fi/")):
                                 Mbox("HUOM!", "VIRHELLINEN URL OSOITE!",0)
                         else:
                                 time.sleep(0.2)
-                                GetPrices.getJimmsPrice(url_alku)
+                                print(price)
 
                 self.btnAddItem.clicked.connect(AddItemClick)
         
