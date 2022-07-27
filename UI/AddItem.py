@@ -119,15 +119,23 @@ class Ui_AddItem(object):
                         price = GetPrices.getJimmsPrice(URL)
                         date = datetime.today().strftime('%Y-%m-%d')
 
-                        
-                        databaseObject.addItem(databaseObject, itemName, URL, shop)
-                        databaseObject.addItemPrice(databaseObject, price, date, itemName)
 
-                        if not (URL.startswith("https://www.jimms.fi/")):
-                                Mbox("HUOM!", "VIRHELLINEN URL OSOITE!",0)
-                        else:
-                                time.sleep(0.2)
-                                print(price)
+
+                        
+
+                        if shop == "Jimms":
+
+                                if not (URL.startswith("https://www.jimms.fi/")):
+                                        Mbox("HUOM!", "VIRHELLINEN URL OSOITE!",0)
+                                else:
+                                        time.sleep(0.2)
+                                        print(price)
+                                        databaseObject.addItem(databaseObject, itemName, URL, shop)
+                                        databaseObject.addItemPrice(databaseObject, price, date, itemName)
+
+                        elif shop == "Verkkokauppa.com":
+                                Mbox("HUOM!", "VIRHE 2",0)
+
 
                 self.btnAddItem.clicked.connect(AddItemClick)
         
