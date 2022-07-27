@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from AddItem import Ui_AddItem
-#from AddNewStore import Ui_AddNewStore
+from AddShopForItem import Ui_AddShopForItem
 #from Overview import Ui_Overview
 
 
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
 
     def openWindow2(self):
         self.window = QtWidgets.QMainWindow()
-        #self.ui = Ui_"toisen ikkunan nimi"()
+        self.ui = Ui_AddShopForItem()
         self.ui.setupUi(self.window)
         self.window.show()
 
