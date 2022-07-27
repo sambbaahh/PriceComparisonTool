@@ -29,10 +29,10 @@ class Ui_AddShopForItem(object):
         self.shopDropMenu = QtWidgets.QComboBox(self.centralwidget)
         self.shopDropMenu.setGeometry(QtCore.QRect(290, 190, 391, 51))
         self.shopDropMenu.setObjectName("shopDropMenu")
-        self.labelStore = QtWidgets.QLineEdit(self.centralwidget)
-        self.labelStore.setGeometry(QtCore.QRect(220, 190, 71, 51))
-        self.labelStore.setReadOnly(True)
-        self.labelStore.setObjectName("labelStore")
+        self.labelShop = QtWidgets.QLineEdit(self.centralwidget)
+        self.labelShop.setGeometry(QtCore.QRect(220, 190, 71, 51))
+        self.labelShop.setReadOnly(True)
+        self.labelShop.setObjectName("labelShop")
         self.btnBack = QtWidgets.QPushButton(self.centralwidget)
         self.btnBack.setGeometry(QtCore.QRect(220, 310, 141, 81))
         self.btnBack.setStyleSheet("background-color: rgb(170, 255, 255);")
@@ -61,9 +61,9 @@ class Ui_AddShopForItem(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" dir=\'rtl\' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
         self.labelUrl.setText(_translate("AddItem", "Url:"))
-        self.labelStore.setText(_translate("AddItem", "Select store:"))
+        self.labelShop.setText(_translate("AddItem", "Select shop:"))
         self.btnBack.setText(_translate("AddItem", "Back"))
         self.labelItem.setText(_translate("AddItem", "Select item:"))
 

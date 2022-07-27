@@ -18,7 +18,3 @@ class GetPrices:
         priceDecimal = data["data-decimals"]
         price = priceInteger + "." + priceDecimal
         return price
-
-
-#olio = GetPrices
-#olio.getVerkkokauppaComPrice("https://www.verkkokauppa.com/fi/product/648169/Weber-Master-Touch-GBS-SE-E-5750-hiiligrilli-57-cm-musta")
