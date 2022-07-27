@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-    def openWindow2(self):
+    def openWindowAddShopForItem(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AddShopForItem()
         self.ui.setupUi(self.window)
@@ -213,6 +213,7 @@ class Ui_MainWindow(object):
         self.pushButton_5.setObjectName("pushButton_5")
 
         self.pushButton_5.clicked.connect(self.openWindowAddItem)
+        self.pushButton_3.clicked.connect(self.openWindowAddShopForItem)
 
         self.gridLayout.addWidget(self.pushButton_5, 0, 0, 1, 1)
         self.pushButton = QtWidgets.QPushButton(self.gridLayoutWidget)
