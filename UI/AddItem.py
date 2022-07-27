@@ -31,8 +31,7 @@ class Ui_AddItem(object):
 
                 self.btnAddItem = QtWidgets.QPushButton(self.centralwidget)
                 self.btnAddItem.setGeometry(QtCore.QRect(370, 310, 311, 81))
-                self.btnAddItem.setStyleSheet(
-                    "background-color: rgb(170, 255, 255);")
+                self.btnAddItem.setStyleSheet("background-color: rgb(170, 255, 255);")
                 self.btnAddItem.setObjectName("btnAddItem")
 
                 self.InputUrl = QtWidgets.QTextEdit(self.centralwidget)
@@ -48,8 +47,7 @@ class Ui_AddItem(object):
                 self.LabelItem.setObjectName("LabelItem")
                 self.InputItemName = QtWidgets.QTextEdit(self.centralwidget)
                 self.InputItemName.setGeometry(QtCore.QRect(290, 250, 391, 51))
-                self.InputItemName.setAutoFormatting(
-                    QtWidgets.QTextEdit.AutoNone)
+                self.InputItemName.setAutoFormatting(QtWidgets.QTextEdit.AutoNone)
                 self.InputItemName.setObjectName("InputItemName")
                 self.ShopDropMenu = QtWidgets.QComboBox(self.centralwidget)
                 self.ShopDropMenu.setGeometry(QtCore.QRect(290, 130, 391, 51))
@@ -60,8 +58,7 @@ class Ui_AddItem(object):
                 self.LabelShop.setObjectName("LabelShop")
                 self.btnBack = QtWidgets.QPushButton(self.centralwidget)
                 self.btnBack.setGeometry(QtCore.QRect(220, 310, 141, 81))
-                self.btnBack.setStyleSheet(
-                    "background-color: rgb(170, 255, 255);")
+                self.btnBack.setStyleSheet("background-color: rgb(170, 255, 255);")
                 self.btnBack.setObjectName("btnBack")
                 AddItem.setCentralWidget(self.centralwidget)
                 self.retranslateUi(AddItem)
@@ -74,22 +71,22 @@ class Ui_AddItem(object):
                 AddItem.setWindowTitle(_translate("AddItem", "MainWindow"))
                 self.btnAddItem.setText(_translate("AddItem", "Add item"))
                 self.InputUrl.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
+                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                "p, li { white-space: pre-wrap; }\n"
+                                                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
 
                 self.LabelUrl.setText(_translate("AddItem", "Url:"))
                 self.LabelItem.setText(_translate("AddItem", "Item name:"))
                 self.InputItemName.setMarkdown(_translate("AddItem", "\n"
-"\n"
-"\n"
-""))
+                                                        "\n"
+                                                        "\n"
+                                                        ""))
                 self.InputItemName.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
+                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                        "p, li { white-space: pre-wrap; }\n"
+                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                                                        "<p align=\"center\" style=\" margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
                 self.LabelShop.setText(_translate("AddItem", "Select shop:"))
                 self.btnBack.setText(_translate("AddItem", "Back"))
 
@@ -101,6 +98,7 @@ class Ui_AddItem(object):
                 self.ShopDropMenu.clear()
                 self.ShopDropMenu.setPlaceholderText(" ")
                 self.ShopDropMenu.setCurrentIndex(-1)
+                
                 for row in shopList:
                         self.ShopDropMenu.addItem(row[0])
 
@@ -141,6 +139,7 @@ class Ui_AddItem(object):
 
 
                 self.btnAddItem.clicked.connect(AddItemClick)
+                #cleaning
         
         
 if __name__ == "__main__":
