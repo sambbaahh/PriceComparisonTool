@@ -66,30 +66,6 @@ class Ui_AddItem(object):
 
                 self.btnBack.clicked.connect(AddItem.close)
 
-        def retranslateUi(self, AddItem):
-                _translate = QtCore.QCoreApplication.translate
-                AddItem.setWindowTitle(_translate("AddItem", "MainWindow"))
-                self.btnAddItem.setText(_translate("AddItem", "Add item"))
-                self.InputUrl.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                "p, li { white-space: pre-wrap; }\n"
-                                                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
-
-                self.LabelUrl.setText(_translate("AddItem", "Url:"))
-                self.LabelItem.setText(_translate("AddItem", "Item name:"))
-                self.InputItemName.setMarkdown(_translate("AddItem", "\n"
-                                                        "\n"
-                                                        "\n"
-                                                        ""))
-                self.InputItemName.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                                        "p, li { white-space: pre-wrap; }\n"
-                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-                                                        "<p align=\"center\" style=\" margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
-                self.LabelShop.setText(_translate("AddItem", "Select shop:"))
-                self.btnBack.setText(_translate("AddItem", "Back"))
-
                 #!!!
                 # Set shops to shopDropMenu
                 #!!!
@@ -122,10 +98,8 @@ class Ui_AddItem(object):
                                 else:
                                         priceJimms = GetPrices.getJimmsPrice(URL)
                                         time.sleep(0.2)
-                                        databaseObject.addItem(
-                                            databaseObject, itemName, URL, shop)
-                                        databaseObject.addItemPrice(
-                                            databaseObject, priceJimms, date, itemName)
+                                        databaseObject.addItem(databaseObject, itemName, URL, shop)
+                                        databaseObject.addItemPrice(databaseObject, priceJimms, date, itemName)
 
                         elif shop == "Verkkokauppa.com":
 
@@ -140,6 +114,30 @@ class Ui_AddItem(object):
 
                 self.btnAddItem.clicked.connect(AddItemClick)
                 #cleaning
+        def retranslateUi(self, AddItem):
+                _translate = QtCore.QCoreApplication.translate
+                AddItem.setWindowTitle(_translate("AddItem", "MainWindow"))
+                self.btnAddItem.setText(_translate("AddItem", "Add item"))
+                self.InputUrl.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                "p, li { white-space: pre-wrap; }\n"
+                                                "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                                                "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
+
+                self.LabelUrl.setText(_translate("AddItem", "Url:"))
+                self.LabelItem.setText(_translate("AddItem", "Item name:"))
+                self.InputItemName.setMarkdown(_translate("AddItem", "\n"
+                                                        "\n"
+                                                        "\n"
+                                                        ""))
+                self.InputItemName.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                        "p, li { white-space: pre-wrap; }\n"
+                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                                                        "<p align=\"center\" style=\" margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
+                self.LabelShop.setText(_translate("AddItem", "Select shop:"))
+                self.btnBack.setText(_translate("AddItem", "Back"))
+
         
         
 if __name__ == "__main__":
