@@ -88,23 +88,23 @@ class Ui_AddItem(object):
                         self.ShopDropMenu.addItem(row[0])
 
 
-                def Mbox(title, text, style):
-                        return ctypes.windll.user32.MessageBoxW(0, text, title, style)
+        def Mbox(self, title, text, style):
+                return ctypes.windll.user32.MessageBoxW(0, text, title, style)
 
-                #Tietokantaan lisäys
-                def AddItemClick(self):
-                        databaseObject = Database
-                        QApplication.processEvents()
+        #Tietokantaan lisäys
+        def AddItemClick(self):
+                databaseObject = Database
+                QApplication.processEvents()
 
-                        itemName = self.InputItemName.toPlainText()
-                        URL = self.InputUrl.toPlainText()
-                        shop = self.ShopDropMenu.currentText()
-                        date = datetime.today().strftime('%Y-%m-%d')
+                itemName = self.InputItemName.toPlainText()
+                URL = self.InputUrl.toPlainText()
+                shop = self.ShopDropMenu.currentText()
+                date = datetime.today().strftime('%Y-%m-%d')
 
                 if shop == "Jimms":
 
                         if not (URL.startswith("https://www.jimms.fi/")):
-                                Mbox("Warning","INVALID URL!", 0)
+                                self.Mbox("Warning","INVALID URL!", 0)
                         else:
                                 priceJimms = GetPrices.getJimmsPrice(URL)
                                 priceJimms = ''.join(priceJimms.split())
@@ -115,7 +115,7 @@ class Ui_AddItem(object):
                 elif shop == "Verkkokauppa.com":
 
                         if not (URL.startswith("https://www.verkkokauppa.com/")):
-                                Mbox("Warning", "INVALID URL!",0)
+                                self.Mbox("Warning", "INVALID URL!",0)
                         else:
                                 priceVerkkokauppacom = GetPrices.getVerkkokauppaComPrice(URL)
                                 priceVerkkokauppacom = ''.join(priceVerkkokauppacom.split())

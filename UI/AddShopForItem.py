@@ -64,7 +64,6 @@ class Ui_AddShopForItem(object):
 
 
         #Tavaroiden nimien haku tietokannasta
-        
         object = Database
         itemNameList = object.getItemNames()
         self.itemDropMenu.clear()
@@ -73,6 +72,9 @@ class Ui_AddShopForItem(object):
 
         for row in itemNameList:
             self.itemDropMenu.addItem(row[0])
+
+        ##loppu!
+
 
         #Kauppojen haku tietokannasta
         #!!!
@@ -86,8 +88,15 @@ class Ui_AddShopForItem(object):
         for row in shopList:
             self.shopDropMenu.addItem(row[0])
             
+        ##loppu!
+
+
         self.retranslateUi(AddShop)
         QtCore.QMetaObject.connectSlotsByName(AddShop)
+
+
+
+
 
     def retranslateUi(self, AddItem):
         _translate = QtCore.QCoreApplication.translate
