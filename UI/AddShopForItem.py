@@ -13,6 +13,7 @@ sys.path.append("./")
 from Codes.Database import Database
 
 class Ui_AddShopForItem(object):
+    #Käyttöliittymän setuppaus
     def setupUi(self, AddShop):
         AddShop.setObjectName("AddItem")
         AddShop.resize(890, 580)
@@ -63,6 +64,19 @@ class Ui_AddShopForItem(object):
 
         self.retranslateUi(AddShop)
         QtCore.QMetaObject.connectSlotsByName(AddShop)
+        
+        #Kauppojen haku tietokannasta
+        #!!!
+        # Set shops to shopDropMenu
+        #!!!
+        object = Database
+        shopList = object.findShops()
+        self.shopDropMenu.clear()
+        self.shopDropMenu.setPlaceholderText(" ")
+        self.shopDropMenu.setCurrentIndex(-1)
+        
+        for row in shopList:
+                self.shopDropMenu.addItem(row[0])
 
     def retranslateUi(self, AddItem):
         _translate = QtCore.QCoreApplication.translate
@@ -78,17 +92,6 @@ class Ui_AddShopForItem(object):
         self.btnBack.setText(_translate("AddItem", "Back"))
         self.labelItem.setText(_translate("AddItem", "Select item:"))
 
-        #!!!
-        # Set shops to shopDropMenu
-        #!!!
-        object = Database
-        shopList = object.findShops()
-        self.shopDropMenu.clear()
-        self.shopDropMenu.setPlaceholderText(" ")
-        self.shopDropMenu.setCurrentIndex(-1)
-        
-        for row in shopList:
-                self.shopDropMenu.addItem(row[0])
 
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ from Codes.GetPrices import GetPrices
 from Codes.Database import Database
 
 class Ui_AddItem(object):
-
+        #Käyttöliittymän setuppaus
         def setupUi(self, AddItem):
                 AddItem.setObjectName("AddItem")
                 AddItem.resize(890, 580)
@@ -74,6 +74,7 @@ class Ui_AddItem(object):
 
                 self.btnBack.clicked.connect(AddItem.close)
 
+                #Kauppojen haku tietokannasta
                 #!!!
                 # Set shops to shopDropMenu
                 #!!!
@@ -90,7 +91,7 @@ class Ui_AddItem(object):
                 def Mbox(title, text, style):
                         return ctypes.windll.user32.MessageBoxW(0, text, title, style)
 
-
+                #Tietokantaan lisäys
                 def AddItemClick(self):
                         databaseObject = Database
                         QApplication.processEvents()
