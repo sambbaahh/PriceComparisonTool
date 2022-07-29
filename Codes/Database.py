@@ -34,7 +34,6 @@ class Database:
             sql_select = "INSERT INTO item (item.ItemName, item.URL, item.ShopID) VALUES ('" + itemName + "', " \
             + "'" + URL + "', (SELECT shop.ShopID FROM shop WHERE shop.ShopName ='" + shop + "'));"
 
-            print(sql_select)
             cursor = connection.cursor()
             cursor.execute(sql_select)
             connection.commit()
@@ -44,7 +43,6 @@ class Database:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
-                print("MySQL connection is closed")
     
 
     def addItemPrice(self, price, date, itemName):
@@ -55,7 +53,6 @@ class Database:
             sql_select = "INSERT INTO price (price.Price, price.Date, price.ItemID) VALUES ('" + price + "', '" + date + "'," \
             + "(SELECT item.ItemID FROM item WHERE item.ItemName = '" + itemName + "' AND item.ShopID = (SELECT item.shopID FROM item WHERE item.ItemName = '"+ itemName +"')));"
 
-            print(sql_select)
             cursor = connection.cursor()
             cursor.execute(sql_select)
             connection.commit()
@@ -65,4 +62,24 @@ class Database:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
-                print("MySQL connection is closed")
+    
+    def getAllItems():
+        try:
+            connection = mysql.connector.connect(
+                host='localhost', database='PriceComparisonTool', user='root', password='admin')
+
+            sql_select = "SELECT item.ItemID, item.URL FROM item"
+            cursor = connection.cursor()
+            cursor.execute(sql_select)
+            records = cursor.fetchall()
+            return records
+            print(records)
+            
+        finally:
+            if connection.is_connected():
+                connection.close()
+                cursor.close()
+
+
+olio = Database
+olio.getAllItems()

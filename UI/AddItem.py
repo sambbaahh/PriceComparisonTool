@@ -64,6 +64,7 @@ class Ui_AddItem(object):
                 self.retranslateUi(AddItem)
                 QtCore.QMetaObject.connectSlotsByName(AddItem)
 
+
                 self.btnBack.clicked.connect(AddItem.close)
 
         def retranslateUi(self, AddItem):
@@ -105,7 +106,7 @@ class Ui_AddItem(object):
                 def Mbox(title, text, style):
                         return ctypes.windll.user32.MessageBoxW(0, text, title, style)
 
-                def AddItemClick():
+                def AddItemClick(self):
                         databaseObject = Database
                         QApplication.processEvents()
 
@@ -138,8 +139,8 @@ class Ui_AddItem(object):
                                         databaseObject.addItemPrice(databaseObject, priceVerkkokauppacom, date, itemName)
 
 
+
                 self.btnAddItem.clicked.connect(AddItemClick)
-                #cleaning
         
         
 if __name__ == "__main__":
