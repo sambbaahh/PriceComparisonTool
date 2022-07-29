@@ -21,6 +21,8 @@ from Codes.Database import Database
 
 
 class Ui_MainWindow(object):
+
+    #Metodit ikkunoiden aukomiseen
     def openWindowAddItem(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AddItem()
@@ -39,7 +41,7 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-
+    #Käyttöliittymän setuppaus
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(890, 580)
@@ -104,7 +106,8 @@ class Ui_MainWindow(object):
         self.btnRefresh.clicked.connect(self.refreshPrices)
         self.btnAddItem.clicked.connect(self.openWindowAddItem)
         self.btnAddShop.clicked.connect(self.openWindowAddShopForItem)
-        
+        #self.btnOverview.clicked.connect(self.openWindowOverview)
+
         self.gridLayout.addWidget(self.btnAddItem, 0, 0, 1, 1)
         self.btnOverview = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.btnOverview.setMinimumSize(QtCore.QSize(0, 200))
@@ -115,7 +118,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-
+    #Metodi tietokannan päivittämiseen
     def refreshPrices(self):
         databaseObject = Database
         getPricesObject = GetPrices

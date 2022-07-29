@@ -13,63 +13,59 @@ sys.path.append("./")
 from Codes.Database import Database
 
 class Ui_AddShopForItem(object):
+    #Käyttöliittymän setuppaus
     def setupUi(self, AddShop):
         AddShop.setObjectName("AddItem")
         AddShop.resize(890, 580)
+
         self.centralwidget = QtWidgets.QWidget(AddShop)
         self.centralwidget.setObjectName("centralwidget")
+
         self.btnAddItem = QtWidgets.QPushButton(self.centralwidget)
         self.btnAddItem.setGeometry(QtCore.QRect(370, 310, 311, 81))
         self.btnAddItem.setStyleSheet("background-color: rgb(170, 255, 255);")
         self.btnAddItem.setObjectName("btnAddItem")
+
         self.inputUrl = QtWidgets.QTextEdit(self.centralwidget)
         self.inputUrl.setGeometry(QtCore.QRect(290, 250, 391, 51))
         self.inputUrl.setObjectName("inputUrl")
+
         self.labelUrl = QtWidgets.QLineEdit(self.centralwidget)
         self.labelUrl.setGeometry(QtCore.QRect(220, 250, 71, 51))
         self.labelUrl.setReadOnly(True)
         self.labelUrl.setObjectName("labelUrl")
+
         self.shopDropMenu = QtWidgets.QComboBox(self.centralwidget)
         self.shopDropMenu.setGeometry(QtCore.QRect(290, 190, 391, 51))
         self.shopDropMenu.setObjectName("shopDropMenu")
+
         self.labelShop = QtWidgets.QLineEdit(self.centralwidget)
         self.labelShop.setGeometry(QtCore.QRect(220, 190, 71, 51))
         self.labelShop.setReadOnly(True)
         self.labelShop.setObjectName("labelShop")
+
         self.btnBack = QtWidgets.QPushButton(self.centralwidget)
         self.btnBack.setGeometry(QtCore.QRect(220, 310, 141, 81))
         self.btnBack.setStyleSheet("background-color: rgb(170, 255, 255);")
         self.btnBack.setObjectName("btnBack")
+
         self.itemDropMenu = QtWidgets.QComboBox(self.centralwidget)
         self.itemDropMenu.setGeometry(QtCore.QRect(290, 130, 391, 51))
         self.itemDropMenu.setObjectName("itemDropMenu")
+
         self.labelItem = QtWidgets.QLineEdit(self.centralwidget)
         self.labelItem.setGeometry(QtCore.QRect(220, 130, 71, 51))
         self.labelItem.setReadOnly(True)
         self.labelItem.setObjectName("labelItem")
+
         AddShop.setCentralWidget(self.centralwidget)
-
-
         self.btnBack.clicked.connect(AddShop.close)
 
 
         self.retranslateUi(AddShop)
         QtCore.QMetaObject.connectSlotsByName(AddShop)
-
-    def retranslateUi(self, AddItem):
-        _translate = QtCore.QCoreApplication.translate
-        AddItem.setWindowTitle(_translate("AddItem", "MainWindow"))
-        self.btnAddItem.setText(_translate("AddItem", "Add item"))
-        self.inputUrl.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
-        self.labelUrl.setText(_translate("AddItem", "Url:"))
-        self.labelShop.setText(_translate("AddItem", "Select shop:"))
-        self.btnBack.setText(_translate("AddItem", "Back"))
-        self.labelItem.setText(_translate("AddItem", "Select item:"))
-
+        
+        #Kauppojen haku tietokannasta
         #!!!
         # Set shops to shopDropMenu
         #!!!
@@ -81,6 +77,21 @@ class Ui_AddShopForItem(object):
         
         for row in shopList:
                 self.shopDropMenu.addItem(row[0])
+
+    def retranslateUi(self, AddItem):
+        _translate = QtCore.QCoreApplication.translate
+        AddItem.setWindowTitle(_translate("AddItem", "MainWindow"))
+        self.btnAddItem.setText(_translate("AddItem", "Add item"))
+        self.inputUrl.setHtml(_translate("AddItem", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+            "p, li { white-space: pre-wrap; }\n"
+            "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+            "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
+        self.labelUrl.setText(_translate("AddItem", "Url:"))
+        self.labelShop.setText(_translate("AddItem", "Select shop:"))
+        self.btnBack.setText(_translate("AddItem", "Back"))
+        self.labelItem.setText(_translate("AddItem", "Select item:"))
+
 
 
 if __name__ == "__main__":

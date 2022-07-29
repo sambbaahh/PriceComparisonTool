@@ -5,7 +5,7 @@ import mysql.connector
 
 
 class Database:
-
+    #Metodi hakee kaupat tietokannasta
     def findShops():
         try:
             connection = mysql.connector.connect(
@@ -23,6 +23,7 @@ class Database:
                 connection.close()
                 cursor.close()
 
+    #Metodi lisää tavaran tietokantaan
     def addItem(self, itemName, URL, shop):
         try:
             print(URL)
@@ -42,7 +43,8 @@ class Database:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
-
+    
+    #Metodi lisää tavaran hinnan tietokantaan
     def addItemPrice(self, price, date, itemName):
         try:
             connection = mysql.connector.connect(
@@ -61,7 +63,8 @@ class Database:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
-
+    
+    #Metodi hakee tietokannasta kaikki tavarat
     def getAllItems():
         try:
             connection = mysql.connector.connect(
