@@ -62,6 +62,24 @@ class Database:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
+
+    #Metodi hakee tietokannasta kaikkien tavaroiden nimet
+    def getItemNames():
+        try:
+            connection = mysql.connector.connect(
+                host='localhost', database='PriceComparisonTool', user='root', password='admin')
+
+            sql_select = "SELECT item.ItemName FROM item"
+            cursor = connection.cursor()
+            cursor.execute(sql_select)
+            records = cursor.fetchall()
+            return records
+        
+        finally:
+            if connection.is_connected():
+                connection.close()
+                cursor.close()
+        
     
     #Metodi hakee tietokannasta kaikki tavarat
     def getAllItems():
