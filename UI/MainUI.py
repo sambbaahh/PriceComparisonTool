@@ -13,6 +13,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from AddItem import Ui_AddItem
 from AddShopForItem import Ui_AddShopForItem
 #from Overview import Ui_Overview
+from datetime import datetime
 import sys
 sys.path.append("./")
 from Codes.GetPrices import GetPrices
@@ -102,6 +103,7 @@ class Ui_MainWindow(object):
         self.btnAddItem.setStyleSheet("background-color: rgb(170, 255, 255);")
         self.btnAddItem.setObjectName("pushButton_5")
 
+        self.btnRefresh.clicked.connect(self.refreshPrices)
         self.btnAddItem.clicked.connect(self.openWindowAddItem)
         self.btnAddShop.clicked.connect(self.openWindowAddShopForItem)
         #self.btnOverview.clicked.connect(self.openWindowOverview)
@@ -119,10 +121,32 @@ class Ui_MainWindow(object):
     #Metodi tietokannan päivittämiseen
     def refreshPrices(self):
         databaseObject = Database
-        items = Database.getAllItems()
-        print(items)
-    
+        getPricesObject = GetPrices
 
+        items = databaseObject.getAllItems()
+        links = []
+        IDs = []
+        newPrices = []
+        date = datetime.today().strftime('%Y-%m-%d')
+    
+        for item in items:
+            IDs.append(item[0])
+            links.append(item[1])
+        
+        for link in links:
+            if(link.startswith("https://www.jimms.fi/")):
+                price = getPricesObject.getJimmsPrice(link)
+                price = ''.join(price.split())
+                newPrices.append(price)
+
+            elif(link.startswith("https://www.verkkokauppa.com/")):
+                price = getPricesObject.getVerkkokauppaComPrice(link)
+                price = ''.join(price.split())
+                newPrices.append(price)
+
+        
+        databaseObject.refreshPrices(databaseObject, newPrices, date, IDs)
+            
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

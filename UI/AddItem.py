@@ -71,7 +71,7 @@ class Ui_AddItem(object):
                 self.retranslateUi(AddItem)
                 QtCore.QMetaObject.connectSlotsByName(AddItem)
 
-
+                self.btnAddItem.clicked.connect(self.AddItemClick)
                 self.btnBack.clicked.connect(AddItem.close)
 
                 #Kauppojen haku tietokannasta
@@ -101,29 +101,31 @@ class Ui_AddItem(object):
                         shop = self.ShopDropMenu.currentText()
                         date = datetime.today().strftime('%Y-%m-%d')
 
-                        if shop == "Jimms":
+                if shop == "Jimms":
 
-                                if not (URL.startswith("https://www.jimms.fi/")):
-                                        Mbox("Warning","INVALID URL!", 0)
-                                else:
-                                        priceJimms = GetPrices.getJimmsPrice(URL)
-                                        time.sleep(0.2)
-                                        databaseObject.addItem(databaseObject, itemName, URL, shop)
-                                        databaseObject.addItemPrice(databaseObject, priceJimms, date, itemName)
+                        if not (URL.startswith("https://www.jimms.fi/")):
+                                Mbox("Warning","INVALID URL!", 0)
+                        else:
+                                priceJimms = GetPrices.getJimmsPrice(URL)
+                                priceJimms = ''.join(priceJimms.split())
+                                time.sleep(0.2)
+                                databaseObject.addItem(databaseObject, itemName, URL, shop)
+                                databaseObject.addItemPrice(databaseObject, priceJimms, date, itemName)
 
-                        elif shop == "Verkkokauppa.com":
+                elif shop == "Verkkokauppa.com":
 
-                                if not (URL.startswith("https://www.verkkokauppa.com/")):
-                                        Mbox("Warning", "INVALID URL!",0)
-                                else:
-                                        priceVerkkokauppacom = GetPrices.getVerkkokauppaComPrice(URL)
-                                        time.sleep(0.2)
-                                        databaseObject.addItem(databaseObject, itemName, URL, shop)
-                                        databaseObject.addItemPrice(databaseObject, priceVerkkokauppacom, date, itemName)
+                        if not (URL.startswith("https://www.verkkokauppa.com/")):
+                                Mbox("Warning", "INVALID URL!",0)
+                        else:
+                                priceVerkkokauppacom = GetPrices.getVerkkokauppaComPrice(URL)
+                                priceVerkkokauppacom = ''.join(priceVerkkokauppacom.split())
+                                time.sleep(0.2)
+                                databaseObject.addItem(databaseObject, itemName, URL, shop)
+                                databaseObject.addItemPrice(databaseObject, priceVerkkokauppacom, date, itemName)
 
 
 
-                self.btnAddItem.clicked.connect(AddItemClick)
+                
 
         def retranslateUi(self, AddItem):
                 _translate = QtCore.QCoreApplication.translate
