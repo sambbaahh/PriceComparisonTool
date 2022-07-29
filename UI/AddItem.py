@@ -93,7 +93,7 @@ class Ui_AddItem(object):
 
         #Tietokantaan lisäys
         def AddItemClick(self):
-                databaseObject = Database
+
                 QApplication.processEvents()
 
                 itemName = self.InputItemName.toPlainText()
@@ -109,8 +109,8 @@ class Ui_AddItem(object):
                                 priceJimms = GetPrices.getJimmsPrice(URL)
                                 priceJimms = ''.join(priceJimms.split())
                                 time.sleep(0.2)
-                                databaseObject.addItem(databaseObject, itemName, URL, shop)
-                                databaseObject.addItemPrice(databaseObject, priceJimms, date, itemName)
+                                Database.addItem(Database, itemName, URL, shop)
+                                Database.addItemPrice(Database, priceJimms, date, itemName)
 
                 elif shop == "Verkkokauppa.com":
 
@@ -120,8 +120,8 @@ class Ui_AddItem(object):
                                 priceVerkkokauppacom = GetPrices.getVerkkokauppaComPrice(URL)
                                 priceVerkkokauppacom = ''.join(priceVerkkokauppacom.split())
                                 time.sleep(0.2)
-                                databaseObject.addItem(databaseObject, itemName, URL, shop)
-                                databaseObject.addItemPrice(databaseObject, priceVerkkokauppacom, date, itemName)
+                                Database.addItem(Database, itemName, URL, shop)
+                                Database.addItemPrice(Database, priceVerkkokauppacom, date, itemName)
 
 
 

@@ -118,3 +118,20 @@ class Database:
                 if connection.is_connected():
                     connection.close()
                     cursor.close()
+
+
+    # def addShopForItem(itemName, URL, ShopID):
+    #     try:
+    #         connection = mysql.connector.connect(
+    #             host='localhost', database='PriceComparisonTool', user='root', password='admin')
+
+    #         sql_select = "INSERT INTO item (item.ItemName, item.URL, ShopID) VALUES "
+
+    #         cursor = connection.cursor()
+    #         cursor.execute(sql_select)
+    #         connection.commit()
+
+    #     finally:
+    #         if connection.is_connected():
+    #             connection.close()
+    #             cursor.close()
