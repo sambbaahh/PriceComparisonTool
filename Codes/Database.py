@@ -23,7 +23,6 @@ class Database:
                 connection.close()
                 cursor.close()
 
-
     def addItem(self, itemName, URL, shop):
         try:
             print(URL)
@@ -32,18 +31,17 @@ class Database:
                 host='localhost', database='PriceComparisonTool', user='root', password='admin')
 
             sql_select = "INSERT INTO item (item.ItemName, item.URL, item.ShopID) VALUES ('" + itemName + "', " \
-            + "'" + URL + "', (SELECT shop.ShopID FROM shop WHERE shop.ShopName ='" + shop + "'));"
+                + "'" + URL + \
+                "', (SELECT shop.ShopID FROM shop WHERE shop.ShopName ='" + shop + "'));"
 
             cursor = connection.cursor()
             cursor.execute(sql_select)
             connection.commit()
 
-
         finally:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
-    
 
     def addItemPrice(self, price, date, itemName):
         try:
@@ -51,18 +49,19 @@ class Database:
                 host='localhost', database='PriceComparisonTool', user='root', password='admin')
 
             sql_select = "INSERT INTO price (price.Price, price.Date, price.ItemID) VALUES ('" + price + "', '" + date + "'," \
-            + "(SELECT item.ItemID FROM item WHERE item.ItemName = '" + itemName + "' AND item.ShopID = (SELECT item.shopID FROM item WHERE item.ItemName = '"+ itemName +"')));"
+                + "(SELECT item.ItemID FROM item WHERE item.ItemName = '" + itemName + \
+                "' AND item.ShopID = (SELECT item.shopID FROM item WHERE item.ItemName = '" + \
+                itemName + "')));"
 
             cursor = connection.cursor()
             cursor.execute(sql_select)
             connection.commit()
 
-
         finally:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
-    
+
     def getAllItems():
         try:
             connection = mysql.connector.connect(
@@ -74,12 +73,27 @@ class Database:
             records = cursor.fetchall()
             return records
             print(records)
-            
+
         finally:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
 
+    def refreshPrices(self, price, date, itemID):
+        index = 0
+        for item in itemID:
+            try:
+                connection = mysql.connector.connect(
+                    host='localhost', database='PriceComparisonTool', user='root', password='admin')
 
-olio = Database
-olio.getAllItems()
+                sql_select = "INSERT INTO price (price.Price, price.Date, price.ItemID) VALUES ('" + str(price[index]) + "', '" + date + "', '" + str(itemID[index]) + "');"
+                print(sql_select)
+                cursor = connection.cursor()
+                cursor.execute(sql_select)
+                connection.commit()
+                index += 1
+
+            finally:
+                if connection.is_connected():
+                    connection.close()
+                    cursor.close()
