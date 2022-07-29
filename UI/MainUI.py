@@ -13,7 +13,10 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from AddItem import Ui_AddItem
 from AddShopForItem import Ui_AddShopForItem
 #from Overview import Ui_Overview
-
+import sys
+sys.path.append("./")
+from Codes.GetPrices import GetPrices
+from Codes.Database import Database
 
 
 class Ui_MainWindow(object):
@@ -34,6 +37,7 @@ class Ui_MainWindow(object):
         #self.ui = Ui_"kolmannen ikkunan nimi"()
         self.ui.setupUi(self.window)
         self.window.show()
+
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -110,6 +114,13 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 
+    def refreshPrices(self):
+        databaseObject = Database
+        items = Database.getAllItems()
+        print(items)
+    
+
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -119,6 +130,9 @@ class Ui_MainWindow(object):
         self.btnRefresh.setText(_translate("MainWindow", "Refresh prices"))
         self.btnExit.setText(_translate("MainWindow", "Exit"))
 
+
+    
+    
     
 
 if __name__ == "__main__":
