@@ -115,7 +115,7 @@ class Ui_AddItem(object):
 
 
                 self.btnAddItem.clicked.connect(AddItemClick)
-                #cleaning
+
         def retranslateUi(self, AddItem):
                 _translate = QtCore.QCoreApplication.translate
                 AddItem.setWindowTitle(_translate("AddItem", "MainWindow"))
