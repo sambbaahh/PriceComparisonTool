@@ -9,6 +9,7 @@
 
 
 
+from pickle import TRUE
 from time import sleep
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -106,22 +107,30 @@ class Ui_AddItem(object):
                         if not (URL.startswith("https://www.jimms.fi/")):
                                 self.Mbox("Warning","INVALID URL!", 0)
                         else:
-                                priceJimms = GetPrices.getJimmsPrice(URL)
-                                priceJimms = ''.join(priceJimms.split())
-                                time.sleep(0.2)
-                                Database.addItem(Database, itemName, URL, shop)
-                                Database.addItemPrice(Database, priceJimms, date, itemName)
+                                itemCheck = Database.checkItemNames(itemName)
+                                if ('TRUE',) in itemCheck:
+                                        self.Mbox("Warning","Item exists in database",0)
+                                else:
+                                        time.sleep(0.2)
+                                        priceJimms = GetPrices.getJimmsPrice(URL)
+                                        priceJimms = ''.join(priceJimms.split())
+                                        Database.addItem(Database, itemName, URL, shop)
+                                        Database.addItemPrice(Database, priceJimms, date, itemName, shop)
 
                 elif shop == "Verkkokauppa.com":
 
                         if not (URL.startswith("https://www.verkkokauppa.com/")):
                                 self.Mbox("Warning", "INVALID URL!",0)
                         else:
-                                priceVerkkokauppacom = GetPrices.getVerkkokauppaComPrice(URL)
-                                priceVerkkokauppacom = ''.join(priceVerkkokauppacom.split())
-                                time.sleep(0.2)
-                                Database.addItem(Database, itemName, URL, shop)
-                                Database.addItemPrice(Database, priceVerkkokauppacom, date, itemName)
+                                itemCheck = Database.checkItemNames(itemName)
+                                if ('TRUE',) in itemCheck:
+                                        self.Mbox("Warning","Item exists in database",0)
+                                else:
+                                        time.sleep(0.2)
+                                        priceVerkkokauppacom = GetPrices.getVerkkokauppaComPrice(URL)
+                                        priceVerkkokauppacom = ''.join(priceVerkkokauppacom.split())
+                                        Database.addItem(Database, itemName, URL, shop)
+                                        Database.addItemPrice(Database, priceVerkkokauppacom, date, itemName, shop)
 
 
 
