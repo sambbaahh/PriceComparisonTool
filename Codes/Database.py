@@ -26,8 +26,6 @@ class Database:
     #Metodi lisää tavaran tietokantaan
     def addItem(self, itemName, URL, shop):
         try:
-            print(URL)
-            print(itemName)
             connection = mysql.connector.connect(
                 host='localhost', database='PriceComparisonTool', user='root', password='admin')
 
@@ -109,7 +107,6 @@ class Database:
                     host='localhost', database='PriceComparisonTool', user='root', password='admin')
 
                 sql_select = "INSERT INTO price (price.Price, price.Date, price.ItemID) VALUES ('" + str(price[index]) + "', '" + date + "', '" + str(itemID[index]) + "');"
-                print(sql_select)
                 cursor = connection.cursor()
                 cursor.execute(sql_select)
                 connection.commit()
