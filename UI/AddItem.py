@@ -9,7 +9,6 @@
 
 
 
-from pickle import TRUE
 from time import sleep
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -102,7 +101,13 @@ class Ui_AddItem(object):
                 shop = self.ShopDropMenu.currentText()
                 date = datetime.today().strftime('%Y-%m-%d')
 
-                if shop == "Jimms":
+                if itemName == '':
+                        self.Mbox("Warning", "Item name not set!", 0)
+                        
+                elif itemName.isspace() == True:
+                        self.Mbox("Warning", "Item name not set!", 0)
+
+                elif shop == "Jimms":
 
                         if not (URL.startswith("https://www.jimms.fi/")):
                                 self.Mbox("Warning","INVALID URL!", 0)
