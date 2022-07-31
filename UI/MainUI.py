@@ -118,6 +118,11 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.btnExit.clicked.connect(self.closeProgram)
+
+    def closeProgram(self):
+        sys.exit()
+
     #Metodi tietokannan päivittämiseen
     def refreshPrices(self):
         databaseObject = Database
