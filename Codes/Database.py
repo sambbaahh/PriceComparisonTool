@@ -10,7 +10,7 @@ class Database:
         try:
             connection = mysql.connector.connect(
                 host='localhost', database='PriceComparisonTool', user='root', password='admin')
-            sql_select = "select shop.ShopName from shop"
+            sql_select = "SELECT shop.ShopName FROM shop"
             cursor = connection.cursor()
             cursor.execute(sql_select)
             records = cursor.fetchall()
@@ -45,15 +45,15 @@ class Database:
                 cursor.close()
     
     #Metodi lisää tavaran hinnan tietokantaan
-    def addItemPrice(self, price, date, itemName):
+    def addItemPrice(self, price, date, itemName, shop):
         try:
             connection = mysql.connector.connect(
                 host='localhost', database='PriceComparisonTool', user='root', password='admin')
 
             sql_select = "INSERT INTO price (price.Price, price.Date, price.ItemID) VALUES ('" + price + "', '" + date + "'," \
                 + "(SELECT item.ItemID FROM item WHERE item.ItemName = '" + itemName + \
-                "' AND item.ShopID = (SELECT item.shopID FROM item WHERE item.ItemName = '" + \
-                itemName + "')));"
+                "' AND item.ShopID = (SELECT shop.shopID FROM shop WHERE shop.ShopName = '" + \
+                shop + "')));"
 
             cursor = connection.cursor()
             cursor.execute(sql_select)
@@ -93,12 +93,13 @@ class Database:
             cursor.execute(sql_select)
             records = cursor.fetchall()
             return records
-            print(records)
 
         finally:
             if connection.is_connected():
                 connection.close()
                 cursor.close()
+
+
 
     def refreshPrices(self, price, date, itemID):
         index = 0
@@ -120,18 +121,46 @@ class Database:
                     cursor.close()
 
 
-    # def addShopForItem(itemName, URL, ShopID):
-    #     try:
-    #         connection = mysql.connector.connect(
-    #             host='localhost', database='PriceComparisonTool', user='root', password='admin')
 
-    #         sql_select = "INSERT INTO item (item.ItemName, item.URL, ShopID) VALUES "
+    def checkShops(item):
+            try:
+                connection = mysql.connector.connect(
+                    host='localhost', database='PriceComparisonTool', user='root', password='admin')
+                sql_select = "SELECT shop.ShopName FROM shop INNER JOIN item WHERE shop.ShopID = item.ShopID AND item.ItemName = '" + item +"'"
+                cursor = connection.cursor()
+                cursor.execute(sql_select)
+                records = cursor.fetchall()
+                return records
 
-    #         cursor = connection.cursor()
-    #         cursor.execute(sql_select)
-    #         connection.commit()
 
-    #     finally:
-    #         if connection.is_connected():
-    #             connection.close()
-    #             cursor.close()
+            finally:
+                if connection.is_connected():
+                    connection.close()
+                    cursor.close()
+
+
+
+    def checkItemNames(itemName):
+        try:
+            connection = mysql.connector.connect(
+                host='localhost', database='PriceComparisonTool', user='root', password='admin')
+
+            sql_select = "SELECT "\
+                "CASE WHEN EXISTS "\
+                    "( "\
+                        "SELECT item.ItemName FROM item "\
+                        "WHERE item.ItemName = '" + itemName + "' "\
+                    ") "\
+                    "THEN 'TRUE' "\
+                    "ELSE 'FALSE' "\
+                "END"
+            cursor = connection.cursor()
+            cursor.execute(sql_select)
+            records = cursor.fetchall()
+            return records
+
+
+        finally:
+            if connection.is_connected():
+                connection.close()
+                cursor.close()
