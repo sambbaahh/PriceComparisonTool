@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication
 from datetime import datetime
+import ctypes
 import time
 import sys
 sys.path.append("./")
@@ -76,10 +77,22 @@ class Ui_AddShopForItem(object):
         self.itemDropMenu.setPlaceholderText(" ")
         self.itemDropMenu.setCurrentIndex(-1)
         self.itemDropMenu.currentTextChanged.connect(self.setShops)
-        for row in itemNameList:
-            self.itemDropMenu.addItem(row[0])
+
+        correctItemList = []
+
+        for item in itemNameList:
+            if item[0] in correctItemList:
+                pass
+            else:
+                correctItemList.append(item[0])
+
+
+        for row in correctItemList:
+            self.itemDropMenu.addItem(row)
 
         ##loppu!
+
+
 
         self.retranslateUi(AddShop)
         QtCore.QMetaObject.connectSlotsByName(AddShop)
@@ -106,7 +119,10 @@ class Ui_AddShopForItem(object):
             else:
                 self.shopDropMenu.addItem(row[0])
 
-
+    
+    
+    def Mbox(self, title, text, style):
+            return ctypes.windll.user32.MessageBoxW(0, text, title, style)
 
 
     def addShopForItem(self):
@@ -127,7 +143,7 @@ class Ui_AddShopForItem(object):
                             priceJimms = ''.join(priceJimms.split())
                             time.sleep(0.2)
                             databaseObject.addItem(databaseObject, itemName, URL, shop)
-                            databaseObject.addItemPrice(databaseObject, priceJimms, date, itemName)
+                            databaseObject.addItemPrice(databaseObject, priceJimms, date, itemName, shop)
 
             elif shop == "Verkkokauppa.com": 
 
